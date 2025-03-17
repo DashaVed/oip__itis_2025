@@ -2,11 +2,19 @@ import os
 import requests
 
 
-URL_FOR_PARSE = "https://plant-atlas.kpfu.ru/plant"
-OUTPUT_FOLDER = "pages_html"
+URL_FOR_PARSE = "https://plant-atlas.kpfu.ru/plant"  # url сайта, с которых парсятся html
+OUTPUT_FOLDER = "pages_html"  # папка для сохранения скачанных страниц
 
 
 def download_pages():
+    """
+    Загружает HTML-страницы с указанного сайта и сохраняет их в локальную папку.
+
+    - Проходит по `plant_id` от 1 до 120, формируя URL
+    - Отправляет HTTP-запрос
+    - Если статус-код 200, сохраняет HTML-страницу в файл
+    - Записывает информацию о скачанных страницах в `index.txt`
+    """
     os.makedirs(OUTPUT_FOLDER, exist_ok=True)
     index_file = os.path.join(OUTPUT_FOLDER, "index.txt")
     headers = {
