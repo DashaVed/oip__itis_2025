@@ -5,7 +5,7 @@ import pymorphy3
 from bs4 import BeautifulSoup
 from stopwordsiso import stopwords
 
-from global_variables import OUTPUT_FOLDER
+from constants import OUTPUT_FOLDER
 
 # Загружаем полный список русских стоп-слов
 STOP_WORDS = stopwords("ru")
