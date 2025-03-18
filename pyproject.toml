@@ -9,6 +9,9 @@ readme = "README.md"
 python = "^3.12"
 beautifulsoup4 = "^4.13.3"
 requests = "^2.32.3"
+setuptools = "^76.0.0"
+stopwordsiso = "^0.6.1"
+pymorphy3 = "^2.0.3"
 
 
 [build-system]
