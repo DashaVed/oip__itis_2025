@@ -1,6 +1,8 @@
 import os
 from collections import defaultdict
 
+from constants import TOKENS_DIR
+
 
 def build_inverted_index():
     """
@@ -12,9 +14,9 @@ def build_inverted_index():
     """
     inverted_index = defaultdict(set)
 
-    for filename in os.listdir("tokens"):
+    for filename in os.listdir(TOKENS_DIR):
         doc_id = filename.split("_")[1]
-        token_path = os.path.join("tokens", filename)
+        token_path = os.path.join(TOKENS_DIR, filename)
 
         with open(token_path, "r", encoding="utf-8") as file:
             for token in file:
