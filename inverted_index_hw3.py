@@ -1,3 +1,4 @@
+import json
 import os
 from collections import defaultdict
 
@@ -26,4 +27,8 @@ def build_inverted_index():
 
 
 if __name__ == "__main__":
-    print(build_inverted_index())
+    index = build_inverted_index()
+    index_new = {key: list(value) for key, value in index.items()}
+
+    with open("inverted_index_tokens.json", "w", encoding="utf8") as file:
+        json.dump(index_new, file, ensure_ascii=False)
