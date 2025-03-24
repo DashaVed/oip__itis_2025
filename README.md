@@ -17,3 +17,5 @@
 
 ### Задание 3
 `python boolean_search_hw3.py`
+
+Файл с инвертированным индексом - [inverted_index_tokens.json](inverted_index_tokens.json)
