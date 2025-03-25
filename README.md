@@ -19,3 +19,8 @@
 `python boolean_search_hw3.py`
 
 Файл с инвертированным индексом - [inverted_index_tokens.json](inverted_index_tokens.json)
+
+### Задание 4
+`python count_tf_and_idf_hw4.py`
+
+Файлы хранятся в папке [tfidf_results](tfidf_results)
