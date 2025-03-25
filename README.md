@@ -17,3 +17,8 @@
 
 ### Задание 3
 `python boolean_search_hw3.py`
+
+### Задание 4
+`python count_tf_and_idf_hw4.py`
+
+Файлы хранятся в папке [tfidf_results](tfidf_results)
