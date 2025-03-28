@@ -23,7 +23,7 @@ def get_tokens_and_lemmas():
     """
     for file_name in os.listdir(OUTPUT_FOLDER):
         if file_name.endswith(".html"):
-            tokens = set()
+            tokens = []
             lemmas = {}
             file_path = os.path.join(OUTPUT_FOLDER, file_name)
             with open(file_path, "r", encoding="utf-8") as file:
@@ -33,7 +33,7 @@ def get_tokens_and_lemmas():
 
                 for word in words:
                     if word not in STOP_WORDS and not re.search(r"\d", word):  # Проверяем, что слова не из списка слов и не содержат цифры
-                        tokens.add(word)
+                        tokens.append(word)
                         lemma = morph.parse(word)[0].normal_form  # Лемматизация
 
                         if lemma in lemmas:
