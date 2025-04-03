@@ -24,3 +24,11 @@
 `python count_tf_and_idf_hw4.py`
 
 Файлы хранятся в папке [tfidf_results](tfidf_results)
+
+### Задание 5
+`python info_search_console_hw5.py`
+
+### Запуск демо
+`fastapi dev info_engine_app_demo.py` - запуск сервера
+
+[info_engine.html](info_engine.html) - страница для отпрвления запроса
