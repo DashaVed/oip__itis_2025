@@ -3,3 +3,4 @@ OUTPUT_FOLDER = "pages_html"  # папка для сохранения скач�
 TOKENS_DIR = "tokens"
 LEMMAS_DIR = "lemmas"
 OUTPUT_TF_IDF_RESULT_DIR = "tfidf_results"
+EPSILON = 1e-6  # Маленькое значение, чтобы избежать idf = 0

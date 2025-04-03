@@ -2,7 +2,7 @@ import os
 import math
 from collections import Counter
 
-from constants import TOKENS_DIR, LEMMAS_DIR, OUTPUT_TF_IDF_RESULT_DIR
+from constants import TOKENS_DIR, LEMMAS_DIR, OUTPUT_TF_IDF_RESULT_DIR, EPSILON
 
 
 def compute_token_idf(documents: dict[str, list[str]]) -> dict[str, float]:
@@ -16,7 +16,7 @@ def compute_token_idf(documents: dict[str, list[str]]) -> dict[str, float]:
     df_counts = Counter()
     for words in documents.values():
         df_counts.update(set(words))
-    return {word: math.log(count_of_docs / df) for word, df in df_counts.items()}
+    return {word: max(math.log(count_of_docs / df), EPSILON) for word, df in df_counts.items()}
 
 
 def compute_lemma_idf(documents: dict[str, list[list[str]]]) -> dict[str, float]:
@@ -36,7 +36,7 @@ def compute_lemma_idf(documents: dict[str, list[list[str]]]) -> dict[str, float]
     for words_list in documents.values():
         for words in words_list:
             df = sum(df_counts[word] for word in words[1:])
-            idf_dict[words[0]] = math.log(count_of_docs / min(count_of_docs, df))
+            idf_dict[words[0]] = max(math.log(count_of_docs / min(count_of_docs, df)), EPSILON)
     return idf_dict
 
 
@@ -92,7 +92,7 @@ def main():
 
         with open(os.path.join(OUTPUT_TF_IDF_RESULT_DIR, f"plant_{doc_id}_lemmas_tfidf.txt"), "w", encoding="utf-8") as f:
             for word, tfidf_score in sorted(tfidf_lemmas.items()):
-                f.write(f"{word} {idf_lemmas[word]:.4f} {tfidf_score:.4f}\n")
+                f.write(f"{word} {idf_lemmas[word]} {tfidf_score}\n")
 
 
 if __name__ == "__main__":
