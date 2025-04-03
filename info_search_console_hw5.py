@@ -1,5 +1,6 @@
 import os
 from collections import defaultdict
+from typing import Any
 
 import pymorphy3
 from sklearn.metrics.pairwise import cosine_similarity
@@ -57,7 +58,7 @@ def compute_query_vector(query: str, index: dict[str, dict[str, tuple[float, flo
     return query_vector
 
 
-def search(query: str, index: dict[str, dict[str, tuple[float, float]]]) -> list[int]:
+def search(query: str, index: dict[str, dict[str, tuple[float, float]]]) -> list[tuple[Any, Any]]:
     """
     Выполняет векторный поиск документов, релевантных запросу
 
@@ -79,7 +80,7 @@ def search(query: str, index: dict[str, dict[str, tuple[float, float]]]) -> list
     query_vector_list = [[query_vector.get(lemma, 0) for lemma in query_vector]]
     similarities = cosine_similarity(query_vector_list, doc_vectors)[0]
 
-    return [doc_id for doc_id, score in zip(doc_ids, similarities) if score > 0] or []
+    return [(doc_id, score) for doc_id, score in zip(doc_ids, similarities)]
 
 
 if __name__ == "__main__":
